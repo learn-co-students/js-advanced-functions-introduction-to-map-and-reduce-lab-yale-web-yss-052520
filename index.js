@@ -8,11 +8,11 @@ const mapper = (arr, fn) => {
 }
 
 const reducer = (arr, fn, start = arr[0]) =>{
-    arr = (start == arr[0]) ? arr.slice(1) : arr;
-    for (let val of arr){
-        start = fn(start, val)
+    var value = (start == arr[0]) ? start : fn(start, arr[0]);
+    for (let val of arr.slice(1)){
+        value = fn(value, val)
     }
-    return start;
+    return value;
 }
 
 const mapToNegativize = (arr) =>{
